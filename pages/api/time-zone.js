@@ -3,11 +3,13 @@ import { DateTime } from 'luxon';
 export default async function handler(req, res) {
   try {
     // Get client IP address
-    const ip = req.headers['x-forwarded-for'] || 
-              req.headers['x-real-ip'] || 
-              req.ip || 
-              '8.8.8.8'; // Fallback to Google DNS server
-              
+    // const ip = req.headers['x-forwarded-for'] || 
+    //           req.headers['x-real-ip'] || 
+    //           req.ip || 
+    //           '8.8.8.8'; // Fallback to Google DNS server
+
+    const ip = req.ip;
+
     // Get geolocation data from ip-api.com
     console.log(`http://ip-api.com/json/${ip}`);
     const response = await fetch(`http://ip-api.com/json/${ip}`);

@@ -15,7 +15,10 @@ export default async function handler(req, res) {
     console.log(data);
     
     if (data.status !== 'success') {
-      throw new Error('Could not determine location');
+      res.status(200).json({
+        result: data
+      });
+      // throw new Error('Could not determine location');
     }
 
     // Get timezone from geolocation

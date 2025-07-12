@@ -8,7 +8,9 @@ const func = async (req, context) => {
    const gmtOffset = now.offset;
    const isDST = now.isInDST;
 
-   return new Response(gmtOffset);
+   const result = `${timezone}\n${gmtOffset}\n${isDST}\n`;
+
+   return new Response(result);
 };
 
 export const config = {
